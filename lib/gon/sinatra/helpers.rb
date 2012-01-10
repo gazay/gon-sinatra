@@ -47,5 +47,5 @@ module Gon
   end
 end
 
-Sinatra::Helpers.send :include, Gon::Sinatra::Helpers
+Sinatra::Application.send :include, Gon::Sinatra::Helpers
 Sinatra::Base.send :include, Gon::Sinatra::GonHelpers
