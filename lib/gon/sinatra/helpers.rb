@@ -7,8 +7,8 @@ module Gon
 
       module InstanceMethods
         def include_gon(options = {})
-          if Gon.request_env && Gon.all_variables.present?
-            data = Gon.all_variables
+          if Gon::Sinatra.request_env && Gon::Sinatra.all_variables.present?
+            data = Gon::Sinatra.all_variables
             namespace = options[:namespace] || 'gon'
             script = "<script>window." + namespace + " = {};"
             unless options[:camel_case]
@@ -36,9 +36,9 @@ module Gon
 
       module InstanceMethods
         def gon
-          if !Gon.request_env || Gon.request != request.object_id
-            Gon.request = request.object_id
-            Gon.request_env = request.env
+          if !Gon::Sinatra.request_env || Gon::Sinatra.request != request.object_id
+            Gon::Sinatra.request = request.object_id
+            Gon::Sinatra.request_env = request.env
           end
           Gon
         end
