@@ -21,7 +21,7 @@ module Gon
               end
             end
             script += "</script>"
-            script.html_safe
+            script
           else
             ""
           end
