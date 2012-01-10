@@ -40,7 +40,7 @@ module Gon
             Gon::Sinatra.request = request.object_id
             Gon::Sinatra.request_env = request.env
           end
-          Gon
+          Gon::Sinatra
         end
       end
     end
