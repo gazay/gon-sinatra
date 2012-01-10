@@ -13,11 +13,11 @@ module Gon
             script = "<script>window." + namespace + " = {};"
             unless options[:camel_case]
               data.each do |key, val|
-                script += namespace + "." + key.to_s + '=' + val.to_json + ";"
+                script += namespace + "." + key.to_s + '=' + val.to_s + ";"
               end
             else
               data.each do |key, val|
-                script += namespace + "." + key.to_s.camelize(:lower) + '=' + val.to_json + ";"
+                script += namespace + "." + key.to_s.camelize(:lower) + '=' + val.to_s + ";"
               end
             end
             script += "</script>"
