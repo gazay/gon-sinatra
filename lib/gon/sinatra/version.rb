@@ -1,5 +1,5 @@
 module Gon
   module Sinatra
-    VERSION = '2.0.5'
+    VERSION = '0.0.5'
   end
 end
