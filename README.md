@@ -118,7 +118,7 @@ That's what you need to do:
       # some logic
       @posts = [some_objects] # Rabl works with instance variables of controller
 
-      gon.rabl 'goners/posts/index.rabl'
+      gon.rabl 'goners/posts/index.rabl', :instance => self
       # some logic
     end
     ```
@@ -162,7 +162,7 @@ gon mapping method:
 ``` ruby
 # your logic stuff here
 
-gon.rabl 'path/to/rabl/file', :as => 'alias'
+gon.rabl 'path/to/rabl/file', :as => 'alias', :instance => self
 ```
 
 ## Installation
