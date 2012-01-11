@@ -5,6 +5,8 @@ If you need to send some data to your js files and you don't want to do this wit
 
 Now with [Rabl](https://github.com/nesquena/rabl) support!
 
+For rails use [gon](https://github.com/gazay/gon).
+
 ## Usage
 
 `views/application.erb`
