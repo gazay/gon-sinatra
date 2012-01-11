@@ -43,6 +43,16 @@ describe Gon::Sinatra, '#all_variables' do
     lambda { Gon::Sinatra.all_variables = 123 }.should raise_error
   end
 
+  it 'should be threadsafe' do
+    instance1 = Sinatra::Base.new!
+    instance2 = Sinatra::Base.new!
+
+    instance1.gon.test = "foo"
+    instance2.gon.test = "bar"
+    instance1.gon.test.should == "foo"
+  end
+
+
   it 'render json from rabl template' do
     Gon::Sinatra.clear
     @objects = [1,2]
