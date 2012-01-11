@@ -64,8 +64,8 @@ describe Gon::Sinatra, '#all_variables' do
   it 'render json from rabl template' do
     @gon.clear
     @objects = [1,2]
-    Gon::Sinatra.rabl 'spec/test_data/sample.rabl', :instance => self
-    Gon::Sinatra.objects.length.should == 2
+    @gon.rabl 'spec/test_data/sample.rabl', :instance => self, :as => 'objects'
+    @gon.objects.length.should == 2
   end
 
   def request
