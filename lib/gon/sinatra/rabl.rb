@@ -1,5 +1,4 @@
 require 'rabl'
-require 'json'
 
 module Gon
   module Sinatra
@@ -9,7 +8,7 @@ module Gon
           source = File.read(rabl_path)
           rabl_engine = ::Rabl::Engine.new(source, :format => 'json')
           output = rabl_engine.render(controller, {})
-          JSON.parse(output)
+          ::Rabl.configuration.json_engine.decode(output)
         end
       end
     end
