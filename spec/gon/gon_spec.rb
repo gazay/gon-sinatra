@@ -32,10 +32,10 @@ describe Gon::Sinatra, '#all_variables' do
     Sinatra::Application.instance_methods.map(&:to_s).include?('include_gon').should == true
 
     # TODO: Make it work
-    # base = Sinatra::Base.new
-    # base.include_gon.should == "<script>window.gon = {};" +
-    #                              "gon.int=1;" +
-    #                            "</script>"
+    base = Sinatra::Base.new!
+    base.include_gon.should == "<script>window.gon = {};" +
+                                 "gon.int=1;" +
+                               "</script>"
   end
 
   it 'returns exception if try to set public method as variable' do
