@@ -1,3 +1,5 @@
+require 'json'
+
 module Gon
   module Sinatra
     module Helpers
@@ -13,11 +15,11 @@ module Gon
             script = "<script>window." + namespace + " = {};"
             unless options[:camel_case]
               data.each do |key, val|
-                script += namespace + "." + key.to_s + '=' + val.to_s + ";"
+                script += namespace + "." + key.to_s + '=' + val.to_json + ";"
               end
             else
               data.each do |key, val|
-                script += namespace + "." + key.to_s.camelize(:lower) + '=' + val.to_s + ";"
+                script += namespace + "." + key.to_s.camelize(:lower) + '=' + val.to_json + ";"
               end
             end
             script += "</script>"
