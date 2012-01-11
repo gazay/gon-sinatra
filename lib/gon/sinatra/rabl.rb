@@ -6,8 +6,9 @@ module Gon
       class << self
         def parse_rabl(rabl_path, controller)
           source = File.read(rabl_path)
-          rabl_engine = ::Rabl::Engine.new(source, :format => 'hash')
-          rabl_engine.render(controller, {})
+          rabl_engine = ::Rabl::Engine.new(source, :format => 'json')
+          output = rabl_engine.render(controller, {})
+          ::Rabl.configuration.json_engine.decode(output)
         end
       end
     end
