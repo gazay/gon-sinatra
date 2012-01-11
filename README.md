@@ -5,9 +5,26 @@ If you need to send some data to your js files and you don't want to do this wit
 
 Now with [Rabl](https://github.com/nesquena/rabl) support!
 
+Now with [Padrino](https://github.com/padrino/padrino-framework) support as well!
+
 For rails use [gon](https://github.com/gazay/gon).
 
 ## Usage
+
+`my_sinatra_application.rb`
+
+``` ruby
+register Gon::Sinatra
+# and if you want to the use Rabl integration
+register Gon::Sinatra::Rabl
+
+#or, in a classy app:
+
+class MySinatraApplication < Sinatra::Base #or Padrino::Application
+  register Gon::Sinatra
+  register Gon::Sinatra::Rabl
+end
+```
 
 `views/application.erb`
 
