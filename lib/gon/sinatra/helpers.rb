@@ -4,8 +4,8 @@ module Gon
   module Sinatra
     module Helpers
       def include_gon(options = {})
-        if Gon::Sinatra.request_env && Gon::Sinatra.all_variables.present?
-          data = Gon::Sinatra.all_variables
+        if gon.all_variables.present?
+          data = gon.all_variables
           namespace = options[:namespace] || 'gon'
           script = "<script>window." + namespace + " = {};"
           unless options[:camel_case]
@@ -27,14 +27,9 @@ module Gon
 
     module GonHelpers
       def gon
-        if !Gon::Sinatra.request_env || Gon::Sinatra.request != request.object_id
-          Gon::Sinatra.request = request.object_id
-          Gon::Sinatra.request_env = request.env
-        end
-        Gon::Sinatra
+        env["gon"] ||= Gon::Sinatra::Store.new({})
+        @gon = env["gon"]
       end
     end
   end
 end
-
-Sinatra::Base.helpers Gon::Sinatra::GonHelpers, Gon::Sinatra::Helpers
