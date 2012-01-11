@@ -38,7 +38,7 @@ module Gon
       alias :set :set_variable
 
       def rabl(view_path, options = {})
-        raise Exception.new("You must require rabl to use the rabl method") unless defined? Rabl
+        raise Exception.new("You must require rabl and register Gon::Sinatra::Rabl to use rabl") unless defined? Rabl
 
         unless options[:instance]
           raise ArgumentError.new("You should pass :instance in options: :instance => self")

@@ -4,7 +4,7 @@ module Gon
   module Sinatra
     module Helpers
       def include_gon(options = {})
-        if gon.all_variables.present?
+        unless gon.all_variables.empty?
           data = gon.all_variables
           namespace = options[:namespace] || 'gon'
           script = "<script>window." + namespace + " = {};"

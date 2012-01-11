@@ -3,6 +3,7 @@ require 'gon-sinatra'
 
 class App < Sinatra::Base
   register Gon::Sinatra
+  register Gon::Sinatra::Rabl
 end
 
 describe Gon::Sinatra, '#all_variables' do 
