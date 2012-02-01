@@ -197,6 +197,7 @@ require 'gon-sinatra'
 ## Contributors
 
 * @gazay
+* @skade
 
 Special thanks to @brainopia, @kossnocorp and @ai.
 
