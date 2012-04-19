@@ -14,12 +14,16 @@ For rails use [gon](https://github.com/gazay/gon).
 
 `my_sinatra_application.rb`
 
-``` ruby
-register Gon::Sinatra
-# and if you want to the use Rabl integration
-register Gon::Sinatra::Rabl
+**Note: For classic (non-modular) applications, you still have to explicitely register `Gon::Sinatra`**
 
-#or, in a classy app:
+``` ruby
+# For classic applications:
+
+Sinatra::register Gon::Sinatra
+# and if you want to the use Rabl integration
+Sinatra::register Gon::Sinatra::Rabl
+
+# For modular applications:
 
 class MySinatraApplication < Sinatra::Base #or Padrino::Application
   register Gon::Sinatra
