@@ -69,6 +69,18 @@ describe Gon::Sinatra, '#all_variables' do
     @gon.objects.length.should == 2
   end
 
+  it 'caches the rabl template' do
+    @gon.clear
+    @objects = [1,2]
+    @gon.rabl 'spec/test_data/sample.rabl', :instance => self
+
+    File.should_not_receive(:read)
+    @gon.clear
+    @objects = [1,2,3]
+    @gon.rabl 'spec/test_data/sample.rabl', :instance => self
+    @gon.objects.length.should == 3
+  end
+
   def request
     @request ||= double 'request', :env => {}
   end
