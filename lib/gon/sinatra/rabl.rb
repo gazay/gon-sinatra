@@ -16,7 +16,7 @@ module Gon
 
           rabl_engine = ::Rabl::Engine.new(source, :format => 'json')
           output = rabl_engine.render(controller, {})
-          ::Rabl.configuration.json_engine.decode(output)
+          ::Rabl.configuration.json_engine.parse(output)
         end
       end
     end

@@ -6,7 +6,7 @@ class App < Sinatra::Base
   register Gon::Sinatra::Rabl
 end
 
-describe Gon::Sinatra, '#all_variables' do 
+describe Gon::Sinatra, '#all_variables' do
   def app
     app = App.new!
     app.env = {}
@@ -15,14 +15,15 @@ describe Gon::Sinatra, '#all_variables' do
 
   before(:each) do
     @gon = Gon::Sinatra::Store.new({})
+    Gon::Sinatra::Rabl.cache.clear
   end
 
   it 'returns all variables in hash' do
     @gon.a = 1
     @gon.b = 2
     @gon.c = @gon.a + @gon.b
-    @gon.c.should == 3
-    @gon.all_variables.should == {'a' => 1, 'b' => 2, 'c' => 3}
+    expect(@gon.c).to eq(3)
+    expect(@gon.all_variables).to eq({'a' => 1, 'b' => 2, 'c' => 3})
   end
 
   it 'supports all data types' do
@@ -40,17 +41,16 @@ describe Gon::Sinatra, '#all_variables' do
     instance = app
 
     instance.gon.int = 1
-    instance.methods.map(&:to_s).include?('include_gon').should == true
+    expect(instance.methods.map(&:to_s)).to include('include_gon')
 
-    # TODO: Make it work
-    instance.include_gon.should == "<script>window.gon = {};" +
-                                     "gon.int=1;" +
-                                   "</script>"
+    expect(instance.include_gon).to eq("<script>window.gon = {};" +
+                                         "gon.int=1;" +
+                                       "</script>")
   end
 
   it 'returns exception if try to set public method as variable' do
     @gon.clear
-    lambda { @gon.all_variables = 123 }.should raise_error
+    expect { @gon.all_variables = 123 }.to raise_error
   end
 
   it 'should be threadsafe' do
@@ -59,26 +59,28 @@ describe Gon::Sinatra, '#all_variables' do
 
     instance1.gon.test = "foo"
     instance2.gon.test = "bar"
-    instance1.gon.test.should == "foo"
+    expect(instance1.gon.test).to eq("foo")
   end
 
   it 'render json from rabl template' do
     @gon.clear
     @objects = [1,2]
     @gon.rabl 'spec/test_data/sample.rabl', :instance => self
-    @gon.objects.length.should == 2
+    expect(@gon.objects.length).to eq(2)
   end
 
   it 'caches the rabl template' do
     @gon.clear
     @objects = [1,2]
-    @gon.rabl 'spec/test_data/sample.rabl', :instance => self
+    path = 'spec/test_data/sample.rabl'
+    source = File.read(path)
+    expect(File).to receive(:read).once.and_return(source)
+    @gon.rabl path, :instance => self
 
-    File.should_not_receive(:read)
     @gon.clear
     @objects = [1,2,3]
     @gon.rabl 'spec/test_data/sample.rabl', :instance => self
-    @gon.objects.length.should == 3
+    expect(@gon.objects.length).to eq(3)
   end
 
   def request
