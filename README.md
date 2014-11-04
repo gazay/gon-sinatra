@@ -120,7 +120,7 @@ Profit of using Rabl with gon:
   5. And so on
 
 For using gon with Rabl you need to create new Rabl template and map gon
-to it. 
+to it.
 For example you have model Post with attributes :title and :body.
 You want to get all your posts in your js as an Array.
 That's what you need to do:
@@ -210,7 +210,7 @@ Special thanks to @brainopia, @kossnocorp and @ai.
 
 The MIT License
 
-Copyright (c) 2011 gazay
+Copyright (c) 2014 gazay
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
