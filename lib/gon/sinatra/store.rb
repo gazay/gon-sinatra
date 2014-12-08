@@ -1,4 +1,3 @@
-
 module Gon
   module Sinatra
     class Store
@@ -16,19 +15,19 @@ module Gon
         @env.clear
       end
 
-      def method_missing(m, *args, &block)
-        if ( m.to_s =~ /=$/ )
-          if public_methods.include? m.to_s[0..-2].to_sym
+      def method_missing(method, *args, &block)
+        if ( method.to_s =~ /=$/ )
+          if public_methods.include? method.to_s[0..-2].to_sym
             raise "You can't use Gon public methods for storing data"
           end
-          set_variable(m.to_s.delete('='), args[0])
+          set_variable(method.to_s.delete('='), args[0])
         else
-          get_variable(m.to_s)
+          get_variable(method.to_s)
         end
       end
 
       def get_variable(name)
-        @env[name]
+        @env && @env[name]
       end
       alias :get :get_variable
 

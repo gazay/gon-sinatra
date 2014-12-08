@@ -2,6 +2,7 @@ require 'json'
 
 module Gon
   module Sinatra
+
     module Helpers
       def include_gon(options = {})
         return '' if gon.all_variables.empty?
@@ -29,5 +30,6 @@ module Gon
         @gon = env['gon']
       end
     end
+
   end
 end
