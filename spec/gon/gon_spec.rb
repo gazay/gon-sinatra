@@ -62,7 +62,7 @@ describe Gon::Sinatra, '#all_variables' do
     expect(instance1.gon.test).to eq("foo")
   end
 
-  it 'render json from rabl template' do
+  it 'renders json from rabl template' do
     @gon.clear
     @objects = [1,2]
     @gon.rabl 'spec/test_data/sample.rabl', :instance => self
