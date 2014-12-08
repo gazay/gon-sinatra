@@ -8,25 +8,25 @@ module Gon
 
         data = gon.all_variables
         namespace = options[:namespace] || 'gon'
-        script = "<script>window." + namespace + " = {};"
+        script = "<script>window.#{namespace} = {};"
         unless options[:camel_case]
           data.each do |key, val|
-            script += namespace + "." + key.to_s + '=' + val.to_json + ";"
+            script << "#{namespace}.#{key}=#{val.to_json};"
           end
         else
           data.each do |key, val|
-            script += namespace + "." + key.to_s.camelize(:lower) + '=' + val.to_json + ";"
+            script << "#{namespace}.#{key.to_s.camelize(:lower)}=#{val.to_json};"
           end
         end
-        script += "</script>"
+        script << '</script>'
         script
       end
     end
 
     module GonHelpers
       def gon
-        env["gon"] ||= Gon::Sinatra::Store.new({})
-        @gon = env["gon"]
+        env['gon'] ||= Gon::Sinatra::Store.new({})
+        @gon = env['gon']
       end
     end
   end
