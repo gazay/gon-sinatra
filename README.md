@@ -10,6 +10,10 @@ Now with [Padrino](https://github.com/padrino/padrino-framework) support as well
 
 For rails use [gon](https://github.com/gazay/gon).
 
+<a href="https://evilmartians.com/?utm_source=gon-sinatra">
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
+
 ## Usage
 
 `my_sinatra_application.rb`
