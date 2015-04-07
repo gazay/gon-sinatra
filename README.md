@@ -1,6 +1,6 @@
 # Gon-sinatra gem — get your Sinatra variables in your js
 
-### Build Status ![http://travis-ci.org/gazay/gon-sinatra](https://secure.travis-ci.org/gazay/gon-sinatra.png)
+### [![Build Status](https://secure.travis-ci.org/gazay/gon-sinatra.png)](http://travis-ci.org/gazay/gon-sinatra)
 
 If you need to send some data to your js files and you don't want to do this with long way through views and parsing - use this force!
 
