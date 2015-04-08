@@ -3,7 +3,7 @@ module Gon
     class Store
       attr_accessor :request
 
-      def initialize(variables)
+      def initialize(variables = {})
         @env = variables
       end
 

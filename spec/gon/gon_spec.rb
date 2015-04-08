@@ -14,7 +14,7 @@ describe Gon::Sinatra, '#all_variables' do
   end
 
   before(:each) do
-    @gon = Gon::Sinatra::Store.new({})
+    @gon = Gon::Sinatra::Store.new
     Gon::Sinatra::Rabl.cache.clear
   end
 

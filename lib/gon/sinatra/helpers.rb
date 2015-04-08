@@ -26,7 +26,7 @@ module Gon
 
     module GonHelpers
       def gon
-        env['gon'] ||= Gon::Sinatra::Store.new({})
+        env['gon'] ||= Gon::Sinatra::Store.new
         @gon = env['gon']
       end
     end
