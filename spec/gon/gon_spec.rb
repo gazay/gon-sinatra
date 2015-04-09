@@ -1,4 +1,3 @@
-# gon_spec_rb
 require 'gon-sinatra'
 
 class App < Sinatra::Base
@@ -31,9 +30,9 @@ describe Gon::Sinatra, '#all_variables' do
     @gon.int = 1
     @gon.float = 1.1
     @gon.string = 'string'
-    @gon.array = [ 1, 'string' ]
+    @gon.array = [1, 'string']
     @gon.hash_var = { :a => 1, :b => '2'}
-    @gon.hash_w_array = { :a => [ 2, 3 ] }
+    @gon.hash_w_array = { :a => [2, 3] }
     @gon.klass = Hash
   end
 
