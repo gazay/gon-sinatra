@@ -23,7 +23,7 @@ describe Gon::Sinatra, '#all_variables' do
     @gon.b = 2
     @gon.c = @gon.a + @gon.b
     expect(@gon.c).to eq(3)
-    expect(@gon.all_variables).to eq({'a' => 1, 'b' => 2, 'c' => 3})
+    expect(@gon.all_variables).to eq({ 'a' => 1, 'b' => 2, 'c' => 3 })
   end
 
   it 'supports all data types' do
@@ -64,21 +64,21 @@ describe Gon::Sinatra, '#all_variables' do
 
   it 'renders json from rabl template' do
     @gon.clear
-    @objects = [1,2]
+    @objects = [1, 2]
     @gon.rabl 'spec/test_data/sample.rabl', :instance => self
     expect(@gon.objects.length).to eq(2)
   end
 
   it 'caches the rabl template' do
     @gon.clear
-    @objects = [1,2]
+    @objects = [1, 2]
     path = 'spec/test_data/sample.rabl'
     source = File.read(path)
     expect(File).to receive(:read).once.and_return(source)
     @gon.rabl path, :instance => self
 
     @gon.clear
-    @objects = [1,2,3]
+    @objects = [1, 2, 3]
     @gon.rabl 'spec/test_data/sample.rabl', :instance => self
     expect(@gon.objects.length).to eq(3)
   end
