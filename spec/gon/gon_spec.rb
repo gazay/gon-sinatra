@@ -49,7 +49,7 @@ describe Gon::Sinatra, '#all_variables' do
 
   it 'returns exception if try to set public method as variable' do
     @gon.clear
-    expect { @gon.all_variables = 123 }.to raise_error
+    expect { @gon.all_variables = 123 }.to raise_error(RuntimeError)
   end
 
   it 'should be threadsafe' do
